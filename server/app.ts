@@ -1,14 +1,17 @@
 import express from 'express';
 import cors from 'cors';
 
+import applicationRoutes from './routes/applicationRoutes';
+
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3000;
+app.use('/api/applications', applicationRoutes);
 
-app.get('/', (_req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
